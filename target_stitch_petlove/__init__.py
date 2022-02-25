@@ -104,6 +104,10 @@ def persist_lines(config, lines):
             number_of_the_current_batch = number_of_the_current_batch + 1
             batch_size = 0
 
+    if len(messages) > 0:
+        data = {'schema': schema, 'table_name': config.get("table_name", ""), 'messages': messages}
+        post_data(config, data)
+
     return state
 
 

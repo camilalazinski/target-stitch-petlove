@@ -152,8 +152,8 @@ def main():
             "region_url": "api.stitchdata.com",
             "batch_api_path": "/v2/import/batch",
             "table_name": "organic_installs",
-            "batch_size": args.token,
-            "token": 500
+            "batch_size": 500,
+            "token": args.token
         }
 
     if not config.get('disable_collection', True):

@@ -141,13 +141,20 @@ def send_usage_stats():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config', help='Config file')
+    parser.add_argument('-t', '--token', help='API Token')
     args = parser.parse_args()
 
     if args.config:
         with open(args.config) as input:
             config = json.load(input)
     else:
-        config = {}
+        config = {
+            "region_url": "api.stitchdata.com",
+            "batch_api_path": "/v2/import/batch",
+            "table_name": "organic_installs",
+            "batch_size": args.token,
+            "token": 500
+        }
 
     if not config.get('disable_collection', True):
         logger.info('Sending version information to singer.io. ' +

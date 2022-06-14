@@ -142,6 +142,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config', help='Config file')
     parser.add_argument('-t', '--token', help='API Token')
+    parser.add_argument('-ta', '--table', help='API Table')
     args = parser.parse_args()
 
     if args.config:
@@ -151,7 +152,7 @@ def main():
         config = {
             "region_url": "api.stitchdata.com",
             "batch_api_path": "/v2/import/batch",
-            "table_name": "organic_installs",
+            "table_name": args.table,
             "batch_size": 500,
             "token": args.token
         }
